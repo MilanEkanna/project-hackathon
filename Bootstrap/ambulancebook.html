@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <title>Hello, world!</title>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css' rel='stylesheet' />
+  <style>
+    #map {
+      height: 70%;
+      width: 50%;
+      right: 50%;
+      transform: translate(50%);
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><button type="button" class="btn btn-outline-danger"> <span>&#9889;</span>HELP ON
+        WHEELS</button></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="index.html"> >><span>&#x1F6A8;</span>Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="about.html" target="_blank"> >><span>&#x1F6A8;</span>About us </a>
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-link" href="contact.html" target="_blank"> >><span>&#x1F6A8;</span>Contact us </a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="security.html" target="_blank"> >><span>&#x1F6A8;</span>Security & Help
+          </a>
+        </li>
+        <div class="mx-2">
+          <div class="btn btn-outline-danger mx-2" data-toggle="modal" data-target="#loginModal">Login</div>
+          <a class="btn btn-outline-danger" href="registration.html" role="button" target="_blank">Join with us</a>
+        </div>
+    </div>
+
+    </ul>
+
+
+  </nav>
+  <h2>ambulance Book</h2>
+
+  <div id='map'></div>
+  <script
+    src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+  <link rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+    type="text/css">
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+  <!-- Footer -->
+
+  <!-- <footer class="container py-5 ">
+    <div class="row">
+      <div class="col-12 col-md">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+        <small class="d-block mb-3 text-muted">© 2022-2023</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Cool stuff</a></li>
+          <li><a class="text-muted" href="#">Random feature</a></li>
+          <li><a class="text-muted" href="#">Team feature</a></li>
+          <li><a class="text-muted" href="#">Stuff for developers</a></li>
+          <li><a class="text-muted" href="#">Another one</a></li>
+          <li><a class="text-muted" href="#">Last time</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Resource</a></li>
+          <li><a class="text-muted" href="#">Resource name</a></li>
+          <li><a class="text-muted" href="#">Another resource</a></li>
+          <li><a class="text-muted" href="#">Final resource</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Business</a></li>
+          <li><a class="text-muted" href="#">Education</a></li>
+          <li><a class="text-muted" href="#">Government</a></li>
+          <li><a class="text-muted" href="#">Gaming</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Team</a></li>
+          <li><a class="text-muted" href="#">Locations</a></li>
+          <li><a class="text-muted" href="#">Privacy</a></li>
+          <li><a class="text-muted" href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+   -->
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script>
+    let lat, long;
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(setPos)
+      }
+      else {
+        alert("can not access your location")
+      }
+    }
+    function setPos(e) {
+      lat = e.coords.latitude;
+      long = e.coords.longitude;
+
+      mapboxgl.accessToken = 'pk.eyJ1Ijoicm9zaGFuYmFkb2xhIiwiYSI6ImNsYnFmeXJpdDFrY3czcWxjaDI1NjR1M3gifQ.NQBTexak_qWCB84BS_UvAQ';
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [long, lat], // starting position
+        zoom: 12
+      });
+
+      // map.addControl(
+      //   new MapboxDirections({
+      //     accessToken: mapboxgl.accessToken
+      //   }),
+      //   'top-left'
+      // );
+      // marker for hospitals
+      map.on("load", () => {
+        map.addSource("places", {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: [
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Make it Mount Pleasant</strong><p>Make it Mount Pleasant is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-77.038659, 38.931567],
+                },
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Mad Men Season Five Finale Watch Party</strong><p>Head to Lounge 201 (201 Massachusetts Avenue NE) Sunday for a Mad Men Season Five Finale Watch Party, complete with 60s costume contest, Mad Men trivia, and retro food and drink. 8:00-11:00 p.m. $10 general admission, $20 admission and two hour open bar.</p>",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-77.003168, 38.894651],
+                },
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Big Backyard Beach Bash and Wine Fest</strong><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a Big Backyard Beach Bash and Wine Fest on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.</p>",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-77.090372, 38.881189],
+                },
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Ballston Arts & Crafts Market</strong><p>The Ballston Arts & Crafts Market sets up shop next to the Ballston metro this Saturday for the first of five dates this summer. Nearly 35 artists and crafters will be on hand selling their wares. 10:00-4:00 p.m.</p>",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-77.111561, 38.882342],
+                },
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Seersucker Bike Ride and Social</strong><p>Feeling dandy? Get fancy, grab your bike, and take part in this year's Seersucker Social bike ride from Dandies and Quaintrelles. After the ride enjoy a lawn party at Hillwood with jazz, cocktails, paper hat-making, and more. 11:00-7:00 p.m.</p>",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-77.052477, 38.943951],
+                },
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Capital Pride Parade</strong><p>The annual Capital Pride Parade makes its way through Dupont this Saturday. 4:30 p.m. Free.</p>",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-77.043444, 38.909664],
+                },
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Muhsinah</strong><p>Jazz-influenced hip hop artist Muhsinah plays the Black Cat (1811 14th Street NW) tonight with Exit Clov and Gods’illa. 9:00 p.m. $12.</p>",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-77.031706, 38.914581],
+                },
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>A Little Night Music</strong><p>The Arlington Players' production of Stephen Sondheim's <em>A Little Night Music</em> comes to the Kogod Cradle at The Mead Center for American Theater (1101 6th Street SW) this weekend and next. 8:00 p.m.</p>",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-77.020945, 38.878241],
+                },
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Truckeroo</strong><p>Truckeroo brings dozens of food trucks, live music, and games to half and M Street SE (across from Navy Yard Metro Station) today from 11:00 a.m. to 11:00 p.m.</p>",
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [-77.007481, 38.876516],
+                },
+              },
+            ],
+          },
+        });
+        // Add a layer showing the places.
+        map.addLayer({
+          id: "places",
+          type: "circle",
+          source: "places",
+          paint: {
+            "circle-color": "#4264fb",
+            "circle-radius": 6,
+            "circle-stroke-width": 2,
+            "circle-stroke-color": "#ffffff",
+          },
+        });
+
+        // Create a popup, but don't add it to the map yet.
+        const popup = new mapboxgl.Popup({
+          closeButton: false,
+          closeOnClick: false,
+        });
+
+        map.on("mouseenter", "places", (e) => {
+          // Change the cursor style as a UI indicator.
+          map.getCanvas().style.cursor = "pointer";
+
+          // Copy coordinates array.
+          const coordinates = e.features[0].geometry.coordinates.slice();
+          const description = e.features[0].properties.description;
+
+          // Ensure that if the map is zoomed out such that multiple
+          // copies of the feature are visible, the popup appears
+          // over the copy being pointed to.
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
+
+          // Populate the popup and set its coordinates
+          // based on the feature found.
+          popup.setLngLat(coordinates).setHTML(description).addTo(map);
+        });
+
+        map.on("mouseleave", "places", () => {
+          map.getCanvas().style.cursor = "";
+          popup.remove();
+        });
+      }
+      );
+      const marker = new mapboxgl.Marker({
+        draggable: true
+      })
+        .setLngLat([long, lat])
+        .addTo(map);
+
+      /* Given a query in the form "lng, lat" or "lat, lng"
+      * returns the matching geographic coordinate(s)
+      * as search results in carmen geojson format,
+      * https://github.com/mapbox/carmen/blob/master/carmen-geojson.md */
+      const coordinatesGeocoder = function (query) {
+        // Match anything which looks like
+        // decimal degrees coordinate pair.
+        const matches = query.match(
+          /^[ ]*(?:Lat: )?(-?\d+\.?\d*)[, ]+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/i
+        );
+        if (!matches) {
+          return null;
+        }
+
+        function coordinateFeature(lng, lat) {
+          return {
+            center: [lng, lat],
+            geometry: {
+              type: 'Point',
+              coordinates: [lng, lat]
+            },
+            place_name: 'Lat: ' + lat + ' Lng: ' + lng,
+            place_type: ['coordinate'],
+            properties: {},
+            type: 'Feature'
+          };
+        }
+
+        const coord1 = Number(matches[1]);
+        const coord2 = Number(matches[2]);
+        const geocodes = [];
+
+        if (coord1 < -90 || coord1 > 90) {
+          // must be lng, lat
+          geocodes.push(coordinateFeature(coord1, coord2));
+        }
+
+        if (coord2 < -90 || coord2 > 90) {
+          // must be lat, lng
+          geocodes.push(coordinateFeature(coord2, coord1));
+        }
+
+        if (geocodes.length === 0) {
+          // else could be either lng, lat or lat, lng
+          geocodes.push(coordinateFeature(coord1, coord2));
+          geocodes.push(coordinateFeature(coord2, coord1));
+        }
+
+        return geocodes;
+      };
+
+      // Add the control to the map.
+      map.addControl(
+        new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          localGeocoder: coordinatesGeocoder,
+          zoom: 4,
+          placeholder: 'Try: -40, 170',
+          mapboxgl: mapboxgl,
+          reverseGeocode: true
+        })
+      );
+      map.addControl(new mapboxgl.NavigationControl())
+
+    }
+    getLocation()
+  </script>
+
+
+
+</body>
+
+</html>
